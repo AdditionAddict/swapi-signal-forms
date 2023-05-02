@@ -16,7 +16,7 @@ export class SignalFormBuilder {
   }
 
   public createFormGroup<
-    Controls extends | { [p: string]: FormField | FormGroup }
+    Controls extends | { [p: string]: FormField | FormGroup<any> }
       | WritableSignal<any[]>
   >(
     formGroupCreator: () => Controls,
