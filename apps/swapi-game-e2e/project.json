@@ -1,0 +1,33 @@
+{
+  "name": "swapi-game-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/swapi-game-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/swapi-game-e2e/cypress.config.ts",
+        "devServerTarget": "swapi-game:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "swapi-game:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "swapi-game:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/swapi-game-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["swapi-game"]
+}
