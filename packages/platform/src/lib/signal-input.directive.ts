@@ -4,8 +4,10 @@ import {FormField} from './form-field';
 import {SIGNAL_INPUT_MODIFIER, SignalInputModifier} from "./signal-input-modifier.token";
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[ngModel][formField]',
   standalone: true,
+  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
   host: {
     '(ngModelChange)': 'onModelChange($event)',
     '(blur)': 'onBlur()',

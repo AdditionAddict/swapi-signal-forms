@@ -2,13 +2,14 @@ import {Directive, forwardRef, Input, OnDestroy} from '@angular/core';
 import {SIGNAL_INPUT_MODIFIER, SignalInputModifier} from "./signal-input-modifier.token";
 import {debounceTime, Subject, Subscription} from "rxjs";
 
-export const DEBOUNCE_MODIFIER: any = {
+export const DEBOUNCE_MODIFIER = {
   provide: SIGNAL_INPUT_MODIFIER,
   useExisting: forwardRef(() => SignalInputDebounceDirective),
   multi: true
 };
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[ngModel][formField][debounce]',
   standalone: true,
   providers: [DEBOUNCE_MODIFIER]
@@ -27,8 +28,8 @@ export class SignalInputDebounceDirective implements SignalInputModifier, OnDest
   }
 
   // we replace this in the registerOnSet method with the set function passed by the SignalInputDirective
-  private setSignal(value: unknown): void {
-  }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private setSignal = (value: unknown) => { return; } 
 
   public registerOnSet(set: (value: unknown) => void): void {
     this.setSignal = set

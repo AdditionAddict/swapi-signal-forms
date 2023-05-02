@@ -9,6 +9,7 @@ const SIGNAL_INPUT_ERROR_FIELD= new InjectionToken<FormField>('Signal input erro
 export const injectErrorField = () => inject(SIGNAL_INPUT_ERROR_FIELD);
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[ngModel][formField]',
   standalone: true,
 })
