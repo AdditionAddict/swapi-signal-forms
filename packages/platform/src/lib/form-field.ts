@@ -66,9 +66,10 @@ export function createFormField<Value>(
     injector: injector
   });
 
-  if (finalOptions?.hidden) {
+  const hidden = finalOptions?.hidden
+  if (hidden) {
     effect(() => {
-        hiddenSignal.set(finalOptions!.hidden!());
+        hiddenSignal.set(hidden());
       },
       {
         allowSignalWrites: true,
@@ -76,9 +77,10 @@ export function createFormField<Value>(
       });
   }
 
-  if (finalOptions?.disabled) {
+  const disabled = finalOptions?.disabled
+  if (disabled) {
     effect(() => {
-        disabledSignal.set(finalOptions!.disabled!());
+        disabledSignal.set(disabled());
       },
       {
         allowSignalWrites: true,
